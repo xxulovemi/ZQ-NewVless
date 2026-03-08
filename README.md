@@ -98,13 +98,6 @@
 ## 🔗 相关链接
 
 [workers-vless](https://github.com/ymyuuu/workers-vless)
-## ☕️ 请我喝杯奶茶
-
-如果本项目对你有帮助，欢迎请我喝杯奶茶 
-
-<p align="center">
-  <img src="https://blog.520jacky.ip-ddns.com/img/8.jpg" alt="请我喝杯奶茶" width="220" />
-</p>
 
 
 
