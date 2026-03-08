@@ -22,7 +22,7 @@
 4. 输入 Worker 名称并创建
 5. 进入在线编辑器：
    - 删除默认模板代码
-   - 打开本仓库的 `worker(前端).js`或者`worker(无前端).js`(`注意:无前端版本无管理面板，不适合小白使用`)，复制全部内容
+   - 打开本仓库的 `worker.js`，复制全部内容
    - 粘贴到 Cloudflare 在线编辑器中
 6. 点击右上角 **保存并部署**
 7. 创建 KV 命名空间：
@@ -36,7 +36,7 @@
 9. 绑定自定义域名(`注意:不能使用workers默认域名`)
 
 ### 2. 部署到Pages
-1. [下载 有前端版本](https://github.com/bayueqi/ZQ-NewVless/releases/download/%E5%AE%89%E8%A3%85%E5%8C%85/worker.zip)或者[下载 无前端版本](https://github.com/bayueqi/ZQ-NewVless/releases/download/%E5%AE%89%E8%A3%85%E5%8C%85/worker.none.zip)
+1. [下载 ZIP](https://github.com/bayueqi/ZQ-NewVless/archive/refs/heads/main.zip)
 2. 登录 Cloudflare → **Workers 和 Pages** → **创建应用程序** → 选择 **创建 Pages**
 3. 选择 **直接上传**，上传下载的 ZIP 包,直接保存并部署 
 4. 创建 KV 命名空间：
