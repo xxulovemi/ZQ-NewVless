@@ -8,6 +8,3 @@ compatibility_flags = [ "nodejs_compat" ]   # 推荐开启，更好支持 stream
 [observability.logs]
 enabled = false
 
-[[unsafe.bindings]]
-name = "WARP"
-type = "hyperdrive"
