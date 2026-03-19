@@ -22,7 +22,7 @@
 4. 输入 Worker 名称并创建
 5. 进入在线编辑器：
    - 删除默认模板代码
-   - 打开本仓库的 `worker.js`，复制全部内容
+   - 打开本仓库的 `_worker.js`，复制全部内容
    - 粘贴到 Cloudflare 在线编辑器中
 6. 点击右上角 **保存并部署**
 7. 创建 KV 命名空间：
@@ -86,6 +86,3 @@
 ## 🔗 相关链接
 
 [workers-vless](https://github.com/ymyuuu/workers-vless)
-
-
-
