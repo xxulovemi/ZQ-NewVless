@@ -1,4 +1,4 @@
-# ZQ-NewVless
+# ZQ-VTS
 
 ![页面](src/优化界面.png)
 ![页面](src/管理界面.png)
@@ -11,6 +11,9 @@
 - 📱 **响应式设计**：支持桌面和移动端访问
 - 🎨 **优选工具集成**：内置优选域名,ProxyIP与订阅链接转换工具链接
 - ⚡ **高性能**：基于Cloudflare Workers，全球加速
+- 🔄 **VLESS协议**：专注于VLESS协议，代码精简高效
+- 🛡️ **流量混淆**：参数和路径伪装，降低被检测风险
+- ✂️ **代码优化**：精简至约500行，保持所有功能
 
 ## 🚀 部署步骤
 
@@ -27,23 +30,23 @@
 6. 点击右上角 **保存并部署**
 7. 创建 KV 命名空间：
    - 左侧进入 **存储和数据库**，点击**KV**
-   - 点击 **创建命名空间**，名称建议：`NewVless`
+   - 点击 **创建命名空间**，名称建议：`VTS`
 8. 在 Worker 详情页绑定 KV：
    - 打开 Worker → **设置** → **变量** → **KV 命名空间绑定** → **添加绑定**
-   - 变量名称：`NewVless`
+   - 变量名称：`VTS`
    - 选择刚创建的 KV 命名空间
    - 点击 **保存**
 9. 绑定自定义域名(`注意:不能使用workers默认域名`)
 
 ### 2. 部署到Pages
-1. [下载 ZIP](https://github.com/bayueqi/ZQ-NewVless/archive/refs/heads/main.zip)
+1. [下载 ZIP](https://github.com/bayueqi/ZQ-VTS/archive/refs/heads/main.zip)
 2. 登录 Cloudflare → **Workers 和 Pages** → **创建应用程序** → 选择 **创建 Pages**
 3. 选择 **直接上传**，上传下载的 ZIP 包,直接保存并部署 
 4. 创建 KV 命名空间：
    - 左侧进入 **存储和数据库**，点击**KV**
-   - 点击 **创建命名空间**，名称建议：`NewVless`
+   - 点击 **创建命名空间**，名称建议：`VTS`
 5. 绑定 KV：进入 Pages 项目 → **设置** → **变量** → **KV 命名空间绑定** → **添加绑定**
-   - 变量名称：`NewVless`
+   - 变量名称：`VTS`
    - 选择已创建的 KV 命名空间
 6. 再次上传 ZIP 包并部署，接着访问域名(`可以绑定自定义域名，也可使用pages默认域名`)
 
@@ -62,27 +65,34 @@
    - **SOCKS5代理**：可选，格式 `user:pass@host:port`或者`host:port`
    - **ProxyIP**：可选，格式 `host:port`或者`host`
 
+## 🔗 连接方式说明
 
-## 🛠️ 手搓节点
-路径参数
+### 连接模式特点与优势
 
-* `/?mode=direct`（仅直连）
-* `/?mode=s5&s5=user:pass@host:port`（仅SOCKS5）
-* `/?mode=parallel&direct&s5=user:pass@host:port`(直连与SOCKS5)
-* `/?mode=parallel&direct&proxyip=host:port`(直连与proxyip)
-* `/?mode=parallel&direct&s5=user:pass@host:port&proxyip=host:port`(直连，SOCKS5与proxyip)
+| 连接模式 | 特点 | 优势 | 适用场景 |
+|---------|------|------|----------|
+| **仅直连** | 直接使用Cloudflare Workers IP | 延迟低，稳定性好 | 网络环境良好，无需额外代理 |
+| **仅SOCKS5** | 严格使用SOCKS5代理，不回退 | 隐私性强，IP固定 | 需要固定出口IP，避免Cloudflare检测 |
+| **直连+SOCKS5** | 自动切换，直连失败时使用SOCKS5 | 可靠性高，容错性强 | 网络环境不稳定，需要备用连接 |
+| **直连+ProxyIP** | 自动切换，直连失败时使用ProxyIP | 可靠性高，可自定义备用IP | 直连不稳定，需要备用出口IP |
+| **直连+SOCKS5+ProxyIP** | 多重备份，自动切换 | 最高可靠性，适应复杂网络环境 | 网络环境极差，需要多重保障 |
 
-![手搓](src/1.png)
-![手搓](src/2.png)
 
+
+## 🛡️ 流量混淆特性
+
+本项目通过以下方式增强流量混淆，降低被检测和针对的风险：
+
+- **路径伪装**：WebSocket路径伪装为正常API风格（如 `/api/v1/data`）
+- **参数混淆**：使用简短无意义的参数名（`t`, `d`, `s`, `p`）替代明显的代理参数
+- **随机参数**：每个节点都添加随机的 `v` 参数增加流量多样性
+- **订阅兼容**：使用标准的Base64编码确保订阅功能正常
+
+## 📝 兼容说明
+
+如果部署后无法使用，请在Cloudflare Workers或者Pages设置中修改兼容日期为2026-02-24。
 
 
 ## 🤝 贡献
 
 欢迎提交Issue和Pull Request！
-
-
-
-## 🔗 相关链接
-
-[workers-vless](https://github.com/ymyuuu/workers-vless)
