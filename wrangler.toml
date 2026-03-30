@@ -4,6 +4,10 @@ compatibility_date = "2026-03-03"
 compatibility_flags = [ "nodejs_compat" ]   # 推荐开启，更好支持 stream 等
 
 
+[[kv_namespaces]]
+binding = "VTS"      # 在 Worker 代码中通过这个名称使用（推荐大写）
+id = "32d62e64dd9f4cf3a41e39790b151dc6"   # 生产环境使用的 ID（必填）
+
 
 [observability.logs]
 enabled = false
