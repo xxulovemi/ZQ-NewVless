@@ -1,6 +1,6 @@
 name = "newvless"
 main = "_worker.js"
-compatibility_date = "2026-03-03"
+compatibility_date = "2025-11-17"
 compatibility_flags = [ "nodejs_compat" ]   # 推荐开启，更好支持 stream 等
 
 
